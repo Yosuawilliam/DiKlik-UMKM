@@ -1,26 +1,68 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* Light Theme Definitions */
+    --color-brand: #059669;
+    /* emerald-600 */
+    --color-bg-page: #f9fafb;
+    /* gray-50 */
+    --color-bg-card: #ffffff;
+    /* white */
+    --color-border: #e5e7eb;
+    /* gray-200 */
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .dashed-border {
+    border-style: dashed;
+  }
+}
+
+@layer components {
+
+  /* --- Layout Wrappers --- */
+  .page-wrapper {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-padding {
+    @apply py-16;
+  }
+
+  /* --- Typography --- */
+  .heading-section {
+    @apply text-2xl font-bold text-gray-900 flex items-center gap-2;
+  }
+
+  .text-description {
+    @apply text-gray-500;
+  }
+
+  /* --- Components --- */
+  .btn-primary {
+    @apply bg-emerald-600 text-white px-6 py-3 rounded-lg font-bold transition shadow-lg shadow-emerald-600/20 hover:bg-emerald-700 hover:shadow-emerald-600/30 active:scale-[0.98];
+  }
+
+  .pill-accent {
+    @apply w-1.5 h-8 bg-emerald-600 rounded-full;
+  }
+
+  .card-empty-state {
+    @apply py-24 text-center border border-gray-200 rounded-xl bg-white border-dashed;
+  }
+
+  /* --- Links --- */
+  .link-accent {
+    @apply text-emerald-600 font-bold hover:text-emerald-700 hover:underline transition decoration-emerald-600/30 cursor-pointer;
+  }
+
+  .link-nav {
+    @apply text-gray-500 hover:text-emerald-600 font-medium transition duration-200;
+  }
 }
